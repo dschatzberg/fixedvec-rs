@@ -675,6 +675,22 @@ impl <'a, T> FixedVec<'a, T> where T: 'a + Copy {
         }
         self.len = tail;
     }
+
+    pub fn get(&self, index: usize) -> Option<&T> {
+        self.as_slice().get(index)
+    }
+
+    pub fn get_mut(&mut self, index: usize) -> Option<&mut T> {
+        self.as_mut_slice().get_mut(index)
+    }
+
+    pub unsafe fn get_unchecked(&self, index: usize) -> &T {
+        self.as_slice().get_unchecked(index)
+    }
+
+    pub unsafe fn get_unchecked_mut(&mut self, index: usize) -> &mut T {
+        self.as_mut_slice().get_unchecked_mut(index)
+    }
 }
 
 impl<'a, T> FixedVec<'a, T> where T: 'a + Copy + PartialEq<T> {
